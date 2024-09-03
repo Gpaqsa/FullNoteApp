@@ -1,19 +1,20 @@
-const mongoose = require('mongoose')
-const Scheme = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const noteScheme = new Scheme(
+const noteSchema = new Schema(
   {
     title: {
       type: String,
       required: true,
     },
-    body: {
+    content: {
+      // Changed from body to content to match the routes
       type: String,
       required: true,
     },
   },
-  { Timestamp: true }
+  { timestamps: true } // Changed Timestamp to timestamps
 );
 
-const Note = mongoose.model("Note", noteScheme);
+const Note = mongoose.model("Note", noteSchema);
 module.exports = Note;

@@ -1,7 +1,6 @@
-// routes/notes.js
 const express = require("express");
 const router = express.Router();
-const Note = require("../model/Note")
+const Note = require("../model/Note");
 
 // Get all notes
 router.get("/", (req, res) => {
@@ -83,6 +82,5 @@ router.delete("/:id", (req, res) => {
       console.error(err.message);
     });
 });
-
 
 module.exports = router;

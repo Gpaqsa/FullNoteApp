@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-
 import NoteList from "./components/NoteList";
 import InputNote from "./components/InputNote";
 import { fetchNotes, createNote, deleteNote } from "./services/noteService";
@@ -29,7 +27,6 @@ function App() {
     if (!newNote.trim()) return;
 
     const newNoteObj = {
-      _id: uuidv4(),
       title: newNote,
       content: `Content for ${newNote}`,
     };
@@ -38,6 +35,7 @@ function App() {
       const addedNote = await createNote(newNoteObj);
       setNotesData([...notesData, addedNote]);
       setNewNote("");
+      setError("");
     } catch (error) {
       setError("Failed to create note. Please try again later.");
       console.error("Failed to create note:", error);
@@ -49,6 +47,7 @@ function App() {
       await deleteNote(id);
       const updatedNotes = notesData.filter((note) => note._id !== id);
       setNotesData(updatedNotes);
+      setError("");
     } catch (error) {
       setError("Failed to delete note. Please try again later.");
       console.error("Failed to delete note:", error);
