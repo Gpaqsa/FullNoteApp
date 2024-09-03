@@ -1,6 +1,6 @@
 const Note = ({ note, handleDelete }) => {
   return (
-    <div>
+    <div className="note">
       <h2>{note.title}</h2>
       <p>{note.content}</p>
       <button onClick={() => handleDelete(note._id)}>Delete</button>

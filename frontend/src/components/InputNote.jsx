@@ -1,6 +1,6 @@
 const InputNote = ({ newNote, setNewNote, handlerSubmit }) => {
   return (
-    <form onSubmit={handlerSubmit}>
+    <form onSubmit={handlerSubmit} className="form">
       <input
         type="text"
         value={newNote}

@@ -51,14 +51,14 @@ function App() {
   };
 
   return (
-    <>
+    <div className="app-container">
       <InputNote
         newNote={newNote}
         setNewNote={setNewNote}
         handlerSubmit={handlerSubmit}
       />
       <NoteList notesData={notesData} handleDelete={handleDelete} />
-    </>
+    </div>
   );
 }
 
