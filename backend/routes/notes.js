@@ -6,14 +6,15 @@ const Note = require("../model/Note")
 // Get all notes
 router.get("/", (req, res) => {
   Note.find()
-    .then((result) => res.json(result))
+    .then((result) => {
+      res.json(result);
+    })
     .catch((err) => {
       res.status(500).json({ message: err.message });
       console.error(err.message);
     });
 });
 
-// Get one note
 router.get("/:id", (req, res) => {
   Note.findById(req.params.id)
     .then((note) => {
@@ -28,7 +29,6 @@ router.get("/:id", (req, res) => {
     });
 });
 
-// Create a new note
 router.post("/", (req, res) => {
   const note = new Note({
     title: req.body.title,
@@ -44,7 +44,6 @@ router.post("/", (req, res) => {
     });
 });
 
-// Update a note
 router.patch("/:id", (req, res) => {
   Note.findById(req.params.id)
     .then((note) => {
@@ -84,5 +83,6 @@ router.delete("/:id", (req, res) => {
       console.error(err.message);
     });
 });
+
 
 module.exports = router;
